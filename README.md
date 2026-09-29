@@ -17,8 +17,7 @@ A Machine Learning project that predicts **automobile prices** based on vehicle 
 * Linear Regression
 * Decision Tree Regressor
 * Random Forest Regressor
-* KNN Regressor
-* Support Vector Regression (SVR)
+
 
 ## 📊 Evaluation Metrics
 
