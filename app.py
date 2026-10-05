@@ -10,23 +10,18 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
-# --------------------------------------------------
-# PAGE CONFIGURATION
-# --------------------------------------------------
+
 
 st.set_page_config(
-    page_title="Automobile Price Prediction",
+    page_title="Automobile Imports Price Prediction",
     page_icon="🚗",
     layout="wide"
 )
 
-st.title("🚗 Automobile Price Prediction")
+st.title("🚗 Automobile Imports Price Prediction")
 st.write("Predict the price of an automobile using Machine Learning.")
 
 
-# --------------------------------------------------
-# LOAD DATASET
-# --------------------------------------------------
 
 @st.cache_data
 def load_data():
@@ -139,9 +134,7 @@ def load_data():
 df = load_data()
 
 
-# --------------------------------------------------
-# PREPARE DATA
-# --------------------------------------------------
+
 
 X = df.drop("price", axis=1)
 y = df["price"]
@@ -164,9 +157,7 @@ X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
 
-# --------------------------------------------------
-# TRAIN MODELS
-# --------------------------------------------------
+
 
 lr_model = LinearRegression()
 
@@ -203,9 +194,6 @@ rf_model.fit(
 y_pred_rf = rf_model.predict(X_test)
 
 
-# --------------------------------------------------
-# MODEL EVALUATION
-# --------------------------------------------------
 
 def calculate_metrics(y_test, prediction):
 
@@ -245,9 +233,7 @@ mae_rf, rmse_rf, r2_rf = calculate_metrics(
 )
 
 
-# --------------------------------------------------
-# MODEL COMPARISON
-# --------------------------------------------------
+
 
 model_comparison = pd.DataFrame({
 
@@ -298,9 +284,6 @@ else:
     selected_model = rf_model
 
 
-# --------------------------------------------------
-# SIDEBAR
-# --------------------------------------------------
 
 st.sidebar.header("Enter Automobile Details")
 
@@ -325,9 +308,7 @@ def select_input(label, column):
     )
 
 
-# --------------------------------------------------
-# USER INPUT
-# --------------------------------------------------
+
 
 symboling = number_input(
     "Symboling",
@@ -455,9 +436,7 @@ highway_mpg = number_input(
 )
 
 
-# --------------------------------------------------
-# CREATE INPUT DATAFRAME
-# --------------------------------------------------
+
 
 input_data = pd.DataFrame({
 
@@ -547,9 +526,7 @@ input_encoded = input_encoded.reindex(
 )
 
 
-# --------------------------------------------------
-# PREDICTION
-# --------------------------------------------------
+
 
 st.subheader("Prediction")
 
@@ -582,9 +559,7 @@ if st.button("Predict Automobile Price"):
     )
 
 
-# --------------------------------------------------
-# MODEL COMPARISON
-# --------------------------------------------------
+
 
 st.subheader("Model Comparison")
 
